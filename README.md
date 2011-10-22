@@ -1,5 +1,5 @@
 #Backbone.Slet
-Get and set attributes of [Backbone.js](http://documentcloud.github.com/backbone/) models that won't persist upon save()
+Get and set attributes of [Backbone.js](http://documentcloud.github.com/backbone/) models that won't persist upon save().
 
 ##Usage
 
@@ -20,12 +20,12 @@ demo.save({}, {success: function(model,resp) {
 	var fromServer = Slet.extend(resp);
 	var stillClient = model;
 	fromServer.getLocal('testVal'); //error
-	stillClient.getLocal('tesetVal'); //'hiya'
+	stillClient.getLocal('testVal'); //'hiya'
 }});
 ```
 
 ##The *local* attribute
-Slet just creates a *local* attribute (i.e., model.get('local') ), stores your local properties there, and slips the property out during save(). *local* doesn't reach sync(), but if sync returns its own 'local' property it will be overwritten. Parse that out if you want:
+Slet just creates a *local* attribute (i.e., model.get('local') ), stores your local properties there, and slips the property out during save(). *Local* doesn't reach sync(), but if sync returns its own 'local' property it will be overwritten. Parse that out if you want:
 
 ``` javascript
 parse: function(resp) {
