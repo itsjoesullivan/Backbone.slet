@@ -43,4 +43,4 @@ For all the convenience of persisting Backbone models, sometimes an attribute is
 - Multiple clients are sharing the same model (say, [Node.js & &yet are helping out](http://andyet.net/blog/2011/feb/15/re-using-backbonejs-models-on-the-server-with-node/)) but need their own copy of certain attributes. This might even be a security concern.
 
 ##Test
-![backbone.slet test](https://github.com/jrs2ea/backbone.slet/blob/master/test.png)
+![backbone.slet test](https://github.com/jrs2ea/backbone.slet/raw/master/test.png)
