@@ -3,17 +3,24 @@ Get and set attributes of [Backbone.js](http://documentcloud.github.com/backbone
 
 ##Use
 
-	instead of set() use setLocal(), alias slet()
+instead of set():
+		
+		setLocal(), alias slet()
 	
-	instead of get() use getLocal(), alias glet()
+instead of get():
 
-	var demo = Slet.extend();
-	var testVal = 'hello';
-	demo.set({'testVal':testVal});
-	var testValLocal = 'hiya';
-	demo.setLocal({'testValLocal':testValLocal});
-	demo.save();
-	// saves a model like { 'testVal' : 'hello' }
+		getLocal(), alias glet()
+
+###Example:
+
+	var demo = Slet.extend(); //extended Backbone model
+	demo.setLocal({'testVal':'hiya'});
+	demo.save({}, {success: function(model,resp) {
+		var fromServer = Slet.extend(resp);
+		var stillClient = model;
+		fromServer.getLocal('testVal'); //error
+		stillClient.getLocal('tesetVal'); //'hiya'
+	}});
 	
 	
 
