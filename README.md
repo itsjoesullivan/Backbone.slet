@@ -13,16 +13,16 @@ instead of get():
 
 ###Example:
 
-	````javascript
-	var demo = Slet.extend(); //extended Backbone model
-	demo.setLocal({'testVal':'hiya'});
-	demo.save({}, {success: function(model,resp) {
-		var fromServer = Slet.extend(resp);
-		var stillClient = model;
-		fromServer.getLocal('testVal'); //error
-		stillClient.getLocal('tesetVal'); //'hiya'
-	}});
-	````
+``` javascript
+var demo = Slet.extend(); //extended Backbone model
+demo.setLocal({'testVal':'hiya'});
+demo.save({}, {success: function(model,resp) {
+	var fromServer = Slet.extend(resp);
+	var stillClient = model;
+	fromServer.getLocal('testVal'); //error
+	stillClient.getLocal('tesetVal'); //'hiya'
+}});
+```
 	
 	
 
