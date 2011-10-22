@@ -25,7 +25,7 @@ demo.save({}, {success: function(model,resp) {
 ```
 
 ##The *local* attribute
-Slet just creates a 'local' attribute (i.e., model.get('local') ), stores your local properties there, and slips the property out during save(). It doesn't reach sync(), but if sync returns its own 'local' property you will override it. Parse that out if you want:
+Slet just creates a *local* attribute (i.e., model.get('local') ), stores your local properties there, and slips the property out during save(). *local* doesn't reach sync(), but if sync returns its own 'local' property it will be overwritten. Parse that out if you want:
 
 ``` javascript
 parse: function(resp) {
