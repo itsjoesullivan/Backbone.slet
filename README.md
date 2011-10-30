@@ -7,9 +7,9 @@ Extend Slet, an extension of Backbone.Model. Mind that Slet models have an overw
 
 		var demo = Slet.extend();
 
-instead of set(obj,options):
+instead of set(obj,[options]):
 		
-		setLocal(obj,options), alias slet(obj,options)
+		setLocal(obj,[options]), alias slet(obj,[options])
 Set options.silent to true to suppress the change event.
 	
 instead of get():
