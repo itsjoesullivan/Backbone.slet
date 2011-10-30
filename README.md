@@ -1,6 +1,12 @@
 #Backbone.slet
 Get and set attributes of [Backbone.js](http://documentcloud.github.com/backbone/) models that won't persist upon save().
 
+##How come?
+For all the convenience of persisting Backbone models, sometimes an attribute is useful to the client but not the server:
+
+- A model knows the client has hidden it, but the server doesn't need to.
+- Multiple clients are sharing the same model (say, [Node.js & &yet are helping out](http://andyet.net/blog/2011/feb/15/re-using-backbonejs-models-on-the-server-with-node/)) but need their own copy of certain attributes. This might even be a security concern.
+
 ##Usage
 
 Extend Slet, an extension of Backbone.Model. Mind that Slet models have an overwritten save() method to slip out local variables, current to Backbone.js v0.5.3:
@@ -42,13 +48,6 @@ parse: function(resp) {
 	return resp;
 }
 ```
-
-##How come?
-For all the convenience of persisting Backbone models, sometimes an attribute is useful to the client but not the server:
-
-- A model knows the client has hidden it, but the server doesn't need to.
-- Multiple clients are sharing the same model (say, [Node.js & &yet are helping out](http://andyet.net/blog/2011/feb/15/re-using-backbonejs-models-on-the-server-with-node/)) but need their own copy of certain attributes. This might even be a security concern.
-
 ##Test
 		/test/test.html and /test/testTheMin.html:
 ![backbone.slet test](https://github.com/jrs2ea/backbone.slet/raw/master/test.png)
