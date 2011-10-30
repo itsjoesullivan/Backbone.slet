@@ -16,14 +16,19 @@ var getLocal = function(query) {
 };
 
 // Same but checks for existence
-var setLocal = function(localObject) {
+var setLocal = function(localObject,options) {
 	var local = this.get('local');
 	if(typeof(local)==='undefined') {
 		local = {};
 	}
 	//'local' inherits localObject properties
 	_(local).extend(localObject);
-	this.set({'local':local});
+	var args;
+	if(options) {
+		this.set({'local':local},options);
+	} else {
+		this.set({'local':local});
+	}
 };
 
 // extend Model

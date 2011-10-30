@@ -32,7 +32,7 @@ describe('setLocal', function() {
 		expect(local.testProperty).toEqual('testProperty');
 	});
 	
-	it("No problem with previous local attributes", function() {
+	it("no problem with previous local attributes", function() {
 		var local = {};
 		local.testProperty = 'testProperty';
 		var test = new Slet({'local':local});
@@ -42,7 +42,7 @@ describe('setLocal', function() {
 		expect(test.glet('testProperty')).toEqual('testProperty');	
 	});
 	
-	it("Overrides previous local attributes", function() {
+	it("overrides previous local attributes", function() {
 		var local = {};
 		local.testProperty = 'testProperty';
 		var test = new Slet({'local':local});
@@ -50,6 +50,57 @@ describe('setLocal', function() {
 		expect(oldLocal.testProperty).toEqual('testProperty');
 		test.slet({'testProperty':'newProperty'});
 		expect(test.glet('testProperty')).toEqual('newProperty');	
+	});
+	
+	it("triggers change event when no options passed", function() {
+		var test = new Slet();
+		var changed = false;
+		var Observer = Backbone.Model.extend({
+			initialize: function() {
+				this.get('model').bind('change', function() {
+					changed = true;
+				},this);
+			}
+		});
+		var observer = new Observer({model:test});
+		var testProperty = 'testProperty';
+		test.setLocal({'testProperty':testProperty},{'silent':false});
+		var local = test.get('local');
+		expect(changed).toBeTruthy();
+	});
+	
+	it("triggers change event when passed silent:false", function() {
+		var test = new Slet();
+		var changed = false;
+		var Observer = Backbone.Model.extend({
+			initialize: function() {
+				this.get('model').bind('change', function() {
+					changed = true;
+				},this);
+			}
+		});
+		var observer = new Observer({model:test});
+		var testProperty = 'testProperty';
+		test.setLocal({'testProperty':testProperty},{'silent':false});
+		var local = test.get('local');
+		expect(changed).toBeTruthy();
+	});
+	
+	it("no change event when passed silent:true", function() {
+		var test = new Slet();
+		var changed = false;
+		var Observer = Backbone.Model.extend({
+			initialize: function() {
+				this.get('model').bind('change', function() {
+					changed = true;
+				},this);
+			}
+		});
+		var observer = new Observer({model:test});
+		var testProperty = 'testProperty';
+		test.setLocal({'testProperty':testProperty},{'silent':true});
+		var local = test.get('local');
+		expect(changed).toBeFalsy();
 	});
 	
 });
