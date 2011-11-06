@@ -188,3 +188,19 @@ describe('save()', function() {
 		}});	
 	});
 });
+
+describe('test readme example', function() {
+	it('makes sense', function() {
+		var testSlet = Slet.extend({
+			sync: testSync
+		});
+		var demo = new testSlet();
+		demo.slet({'testVal':'hiya'});
+		demo.save({}, {success: function(model, resp) {
+			var fromServer = new Slet(resp);
+			var stillClient = model;
+			//expect(fromServer.glet('testVal')).toBeUndefined(); //indeed throws
+			expect(stillClient.glet('testVal')).toEqual('hiya');
+		}});
+	});
+});

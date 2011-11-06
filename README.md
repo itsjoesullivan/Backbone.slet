@@ -27,7 +27,7 @@ instead of get():
 ###Example:
 
 ``` javascript
-var demo = Slet.extend(); //extended Backbone model
+var demo = new Slet();
 demo.setLocal({'testVal':'hiya'});
 demo.save({}, {success: function(model,resp) {
 	var fromServer = Slet.extend(resp);
