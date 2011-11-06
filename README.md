@@ -9,7 +9,7 @@ For all the convenience of persisting Backbone models, sometimes an attribute is
 
 ##Usage
 
-Extend Slet, an extension of Backbone.Model. Mind that Slet models have an overwritten save() method to slip out local variables, current to Backbone.js v0.5.3:
+Create / extend Slet as you would a usual Backbone model. Mind that Slet models have an overwritten save() method to slip out local variables, current to Backbone.js v0.5.3:
 
 		var demo = new Slet();
 
