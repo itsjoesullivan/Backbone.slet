@@ -11,7 +11,7 @@ For all the convenience of persisting Backbone models, sometimes an attribute is
 
 Extend Slet, an extension of Backbone.Model. Mind that Slet models have an overwritten save() method to slip out local variables, current to Backbone.js v0.5.3:
 
-		var demo = Slet.extend();
+		var demo = new Slet();
 
 instead of set(obj,[options]):
 		
